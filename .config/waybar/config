@@ -1,0 +1,127 @@
+{
+	"layer": "top",
+  "margin-left": 15,
+  "margin-right": 15,
+  "margin-top": 15,
+  "margin-bottom": 0,
+	"modules-left": ["battery","cpu","memory","custom/media","tray"],
+	"modules-center": ["hyprland/workspaces"],
+	"modules-right": ["backlight","pulseaudio","network","clock","custom/power"],
+	
+	"pulseaudio": {
+		"tooltip": false,
+		"scroll-step": 5,
+		"format": "{icon} {volume}%",
+		"format-muted": "󰝟 {volume}%",
+		"on-click":"sleep 0.1 && pamixer -t",
+    "on-click-right": "pavucontrol",
+		"format-icons": {
+			"default": ["", "", ""]
+		}
+	},
+
+    "river/tags": {
+		"num-tags": 6
+    },
+	"network": {
+		"format-wifi": "  {signalStrength}%",
+		"format-ethernet": "󰈁",
+		"tooltip-format": "{essid} | {bandwidthTotalBytes}",
+		"on-click": "sleep 0.2 && bash ~/.config/rofi/wifimenu",
+    "on-click-right": "bash ~/.config/rofi/wifimenu",
+	},
+	"backlight": {
+		"tooltip": false,
+		"format": " {}%",
+		"interval":1,
+        "on-scroll-up": "light -U 2",
+		"on-scroll-down": "light -A 2"
+	},
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon}  {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon}  {time}",
+        "format-icons": ["", "", "", "", ""],
+        "interval": 2,
+    },
+	"tray":{
+		"icon-size":18,
+		"spacing": 10
+	},
+    "clock": {
+        "format": "{:󰃶 %d/%m/%Y  %H:%M}",
+        "on-click": "kitty tty-clock -s -C 1 -c",
+        "on-click-right": "gnome-calendar"
+    },
+    "cpu": {
+        "interval": 10,
+        "format": " {usage}%",
+        "max-length": 10,
+        "on-click-right": "kitty btm"
+    },
+    "memory": {
+        "interval": 10,
+        "format": " {}%",
+        "on-click-right": "kitty btm",
+        "max-length": 10
+    },
+    "custom/media": {
+        "interval": 30,
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 20,
+        "format-icons": {
+            "spotify": " ",
+            "default": " "
+        },
+        "escape": true,
+        "exec": "$HOME/.config/system_scripts/mediaplayer.py 2> /dev/null",
+        "on-click": "playerctl play-pause"
+    },
+    "custom/launcher":{
+        "format": " ",
+        "on-click": "sleep 0.2 && rofi -show drun",
+        "on-click-right": "sleep 0.1 && killall rofi"
+    },
+    "custom/power":{
+        "format": " ",
+        "on-click": "sleep 0.2 && bash ~/.config/rofi/powermenu/powermenu.sh",
+    },
+    "custom/updates":{
+        "format": "{} Update(s)",
+        "exec": "checkupdates | wc -l",
+        "exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
+        "interval": 15,
+        "on-click": "sleep 0.1 && alacritty -e paru -Syu && notify-send 'The system has been updated' "
+    },
+    "custom/wallpaper":{
+        "format":" ",
+        "on-click": "sleep 0.1 && bash ~/.config/system_scripts/pkill_bc"
+    },
+    "workspaces": {
+        "all-outputs": false,
+        "active-only": "true",
+        "format": "{name}",
+        "format-icons": {
+		"1": "1",
+     		"2": "2",
+     		"3": "3",
+      		"4": "4",
+      		"5": "5",
+      		"6": "7",
+      		"7": "7",
+      		"8": "8",
+      		"urgent": "",
+      		"default": "0",
+      		"persistent": "persistent",
+      		"empty": "empty"
+	},
+  "on-click": "sleep 0.1 && hyprctl dispatch workspace {name}",
+    }
+}

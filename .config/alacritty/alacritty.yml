@@ -1,0 +1,37 @@
+import:
+  - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml
+
+window:
+  padding:
+    y: 5
+  dynamic_padding: true
+
+cursor:
+  style:
+    shape: Beam
+    blinking: On
+    blink_interval: 300
+    blink_timeout: 10
+  thickness: 0.1
+
+font:
+  normal:
+    family: JetBrainsMono NF
+    style: Regular
+
+  bold:
+    family: JetBrainsMono NF
+    style: Bold
+
+  italic:
+    family: JetBrainsMono NF
+    style: Italic
+
+  bold_italic:
+    family: JetBrainsMono NF
+    style: Bold Italic
+
+  size: 11
+
+env:
+    TERM: "xterm"
