@@ -1,0 +1,21 @@
+# font = /usr/share/fonts/TTF/JetBrainsMonoNerdFontPropo-Light.ttf:
+
+prompt-text = "> "
+
+text-color = #cdd6f4
+prompt-color = #585b70
+selection-color = #cba6f7
+background-color = #181825dd
+
+width = 30%
+height = 40%
+padding-left = 2%
+padding-top = 2%
+padding-bottom = 2%
+num-results = 7
+border-width = 0
+outline-width = 0
+result-spacing = 14
+font = /usr/share/fonts/cantarell/Cantarell-VF.otf
+font-variations = "wght 600"
+font-size = 24

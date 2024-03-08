@@ -1,0 +1,22 @@
+
+text-color = #cdd6f4
+prompt-color = #f38ba8
+selection-background = #cba6f7
+selection-background-padding = 0, 20 
+selection-background-corner-radius = 10
+selection-color = #1e1e2e
+background-color = #181825
+
+width = 37%
+height = 20%
+border-width = 0
+outline-width = 0
+padding-left = 2%
+padding-top = 5%
+result-spacing = 50
+num-results = 6
+font = /usr/share/fonts/TTF/JetBrainsMonoNerdFontPropo-Light.ttf
+font-variations = "wght 600"
+font-size = 64
+horizontal = true
+anchor = center
