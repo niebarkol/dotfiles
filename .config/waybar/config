@@ -26,9 +26,8 @@
 	"network": {
 		"format-wifi": "  {signalStrength}%",
 		"format-ethernet": "󰈁",
+    "format-disconnected": "󰈂",
 		"tooltip-format": "{essid} | {bandwidthTotalBytes}",
-		"on-click": "sleep 0.2 && bash ~/.config/rofi/wifimenu",
-    "on-click-right": "bash ~/.config/rofi/wifimenu",
 	},
 	"backlight": {
 		"tooltip": false,
@@ -55,9 +54,30 @@
 		"spacing": 10
 	},
     "clock": {
-        "format": "{:󰃶 %d/%m/%Y  %H:%M}",
+        "format": "󰃶 {:%d/%m/%Y  %H:%M}",
+        "interval": 1,
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+                    "mode"          : "month",
+                    "mode-mon-col"  : 3,
+                    "on-scroll"     : 1,
+                    "on-click-right": "mode",
+                    "format": {
+                              "months":     "<span color='#74c7ec'><b>{}</b></span>",
+                              "days":       "<span color='#cdd6f4'><b>{}</b></span>",
+                              "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#b4befe'><b>{}</b></span>",
+                              "today":      "<span color='#f38ba8'><b><u>{}</u></b></span>"
+                              }
+                    },
+        "actions":  {
+                    "on-click-right": "mode",
+                    "on-click-forward": "tz_up",
+                    "on-click-backward": "tz_down",
+                    "on-scroll-up": "shift_down",
+                    "on-scroll-down": "shift_up"
+                    },
         "on-click": "kitty tty-clock -s -C 1 -c",
-        "on-click-right": "gnome-calendar"
     },
     "cpu": {
         "interval": 10,
@@ -91,7 +111,7 @@
     },
     "custom/power":{
         "format": " ",
-        "on-click": "sleep 0.2 && bash ~/.config/rofi/powermenu/powermenu.sh",
+        "on-click": "bash ~/.config/tofi/powermenu/powermenu.sh",
     },
     "custom/updates":{
         "format": "{} Update(s)",
@@ -122,6 +142,6 @@
       		"persistent": "persistent",
       		"empty": "empty"
 	},
-  "on-click": "sleep 0.1 && hyprctl dispatch workspace {name}",
+  "on-click": "hyprctl dispatch workspace {name}",
     }
 }
